@@ -74,7 +74,8 @@ module.exports = {
         new webpack.EnvironmentPlugin(['NODE_ENV'])
     ],
     resolve: {
-        modules: ['node_modules', join('src', 'client')]
+        modules: ['node_modules', join('src', 'client')],
+        extensions: ['.ts', '.tsx', '.js', '.json']
     },
     optimization: {
         splitChunks: {
