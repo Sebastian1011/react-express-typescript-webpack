@@ -1,2 +1,2 @@
-import Todo from './Todo';
-export default Todo;
+import TodoComponent from './Todo';
+export default TodoComponent;

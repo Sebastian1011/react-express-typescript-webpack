@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Todo } from '../../model/todo';
 import { getTodoList } from './../../actions/todoAction';
 import { AnyAction } from 'redux';
+import TodoComponent from '../../components/todo';
 
 interface TodoListProps {
     todo_list: Todo[];
@@ -26,8 +27,14 @@ class TodoList extends Component<TodoListProps, TodoListState> {
     }
 
     render() {
-        const { children } = this.props;
-        return <div>{this.props.todo_list.map((todo: Todo) => <span>{todo.name}</span>)}</div>;
+        const { selected } = this.state;
+        return (
+            <div>
+                {this.props.todo_list.map((todo: Todo) => (
+                    <TodoComponent key={todo.id} todo={todo} active={todo.id === selected} />
+                ))}
+            </div>
+        );
     }
 }
 

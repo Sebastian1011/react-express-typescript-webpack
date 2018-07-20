@@ -3,7 +3,7 @@ React boilerplate with ES2015, typescript, Express.js and Webpack
 ## Technologies
 
 -   React (v16) + Redux (v3) + React Router (v4) + Redux-saga (0.16.0)
--   typescript 2.9.x
+-   Typescript 2.9.x
 -   Express.js (v4) as production and development server
 -   Webpack 4 (production and development configurations)
 -   SCSS support
@@ -12,7 +12,7 @@ React boilerplate with ES2015, typescript, Express.js and Webpack
 
 ## Features
 
--   prettier ts,tsx, js precommite
+-   Prettier ts,tsx, js precommite
 -   preconfigured eslint and Prettier code formatter
 -   React Hot Loader
 

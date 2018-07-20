@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './todo.scss';
+import { Todo } from '../../model/todo';
 
 interface TodoProps {
-    del: (id: number) => void;
+    onDel?: (id: number) => void;
     active: boolean;
+    todo: Todo;
 }
 
-class Todo extends Component<TodoProps, any> {
+class TodoComponent extends Component<TodoProps, any> {
     constructor(props: TodoProps) {
         super(props);
     }
@@ -16,8 +18,9 @@ class Todo extends Component<TodoProps, any> {
     };
 
     render() {
-        return <div />;
+        const todo: Todo = this.props.todo;
+        return <div>{todo.name}</div>;
     }
 }
 
-export default Todo;
+export default TodoComponent;
