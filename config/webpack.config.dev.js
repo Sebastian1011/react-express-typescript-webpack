@@ -20,7 +20,6 @@ module.exports = merge(commonConfig, {
         new HtmlWebpackPlugin({
             inject: true,
             template: resolve(__dirname, '..', 'src', 'client', 'index.html'),
-            //favicon: resolve(__dirname, '..', 'src', 'client', 'static', 'favicon.png'),
             alwaysWriteToDisk: true
         }),
         new HtmlWebpackHarddiskPlugin({

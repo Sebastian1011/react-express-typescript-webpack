@@ -16,7 +16,6 @@ module.exports = merge(commonConfig, {
             hash: true,
             inject: true,
             template: resolve(__dirname, '..', 'src', 'client', 'index.html'),
-            //favicon: resolve(__dirname, '..', 'src', 'client', 'static', 'favicon.png'),
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,

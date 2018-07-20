@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import TodoList from './todoList';
+import NotFound from './NotFound';
 
 export class AppLayout extends Component<any, any> {
     render() {
-        return <div>this is app layout 2</div>;
+        return (
+            <div>
+                <Switch>
+                    <Route exact path="/todo" component={TodoList} />
+                    <Redirect to="/todo" />
+                </Switch>
+            </div>
+        );
     }
 }
 

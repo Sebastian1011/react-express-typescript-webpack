@@ -6,3 +6,5 @@ interface NotFoundProps {
 }
 
 const NotFound: SFC<NotFoundProps> = (props) => <div>{props.path || '' + 'Not Found!'}</div>;
+
+export default NotFound;
