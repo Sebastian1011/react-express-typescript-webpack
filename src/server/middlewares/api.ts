@@ -3,20 +3,20 @@ import express, { Request, Response, Express } from 'express';
 import { logger } from '../logger';
 import { Todo } from '../model/todo';
 
-const servers: Todo[] = [{ id: 1, name: 'a' }, { id: 2, name: 'b' }, { id: 3, name: 'c' }];
+const todo_list: Todo[] = [{ id: 1, name: 'a' }, { id: 2, name: 'b' }, { id: 3, name: 'c' }];
 
 export default function setup(app: Express) {
     app.get('/api/todo', (req: Request, res: Response) => {
         res.json({
             rtn: 0,
             message: 'ok',
-            servers
+            todo_list
         });
     });
     app.post('/api/todo', (req: Request, res: Response) => {
         let id: number = 0;
-        if (servers.length > 0) id = servers[servers.length - 1].id + 1;
-        servers.push({ id, name: req.body.name || '' });
+        if (todo_list.length > 0) id = todo_list[todo_list.length - 1].id + 1;
+        todo_list.push({ id, name: req.body.name || '' });
         res.json({
             rtn: 0,
             message: 'ok',
@@ -26,10 +26,10 @@ export default function setup(app: Express) {
 
     app.delete('/api/todo/:id', (req: Request, res: Response) => {
         logger.info(req.params);
-        for (let i = 0; i < servers.length; i++) {
-            const todo = servers[i];
+        for (let i = 0; i < todo_list.length; i++) {
+            const todo = todo_list[i];
             if (todo.id === parseInt(req.params.id)) {
-                servers.splice(i, 1);
+                todo_list.splice(i, 1);
             }
         }
         res.json({
@@ -39,8 +39,8 @@ export default function setup(app: Express) {
     });
 
     app.put('/api/todo/:id', (req: Request, res: Response) => {
-        for (let i = 0; i < servers.length; i++) {
-            const todo = servers[i];
+        for (let i = 0; i < todo_list.length; i++) {
+            const todo = todo_list[i];
             if (todo.id === parseInt(req.params.id)) {
                 todo.name = req.body.name;
             }

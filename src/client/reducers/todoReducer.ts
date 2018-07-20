@@ -1,40 +1,20 @@
-import { List, Map, OrderedMap } from 'immutable';
+import update from 'immutability-helper';
+import { ActionTypes } from '../actions/todoAction';
+import { Todo } from '../model/todo';
+import { AnyAction } from 'redux';
+interface TodoState {
+    todo_list: Todo[];
+}
 
-import { API_DATA_SERVERS_LOADED, API_REQUEST_FINISHED, API_REQUEST_STARTED } from 'api/actions';
+const initState: TodoState = {
+    todo_list: []
+};
 
-const initialState = Map({
-    loading: false,
-    requests: OrderedMap({}),
-    errors: Map({
-        last: null
-    }),
-    lastUpdate: Map({
-        servers: null
-    }),
-    data: Map({
-        servers: List()
-    })
-});
-
-export default function ApiReducer(state = initialState, action) {
+export default function todoReducer(state = initState, action: AnyAction) {
     switch (action.type) {
-        case API_REQUEST_STARTED:
-            return state.setIn(['requests', action.payload.requestId], action.payload).set('loading', true);
-
-        case API_REQUEST_FINISHED:
-            return state
-                .removeIn(['requests', action.payload.requestId])
-                .set('loading', state.get('requests').size > 1)
-                .setIn(
-                    ['errors', 'last'],
-                    action.payload.error ? action.payload.error.message : state.getIn(['errors', 'last'])
-                );
-
-        case API_DATA_SERVERS_LOADED:
-            return state
-                .setIn(['lastUpdate', 'servers'], Date.now())
-                .setIn(['data', 'servers'], List(action.payload.servers));
-
+        case ActionTypes.GET_TODO_LIST_SUCCESS:
+            const todo_list: Todo[] = action.payload.todo_list;
+            return update(state, { todo_list: { $set: todo_list } });
         default:
             return state;
     }
