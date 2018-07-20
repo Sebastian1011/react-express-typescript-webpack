@@ -19,7 +19,7 @@ export class AppLayout extends Component<any, any> {
     render() {
         const { loading } = this.props;
         return (
-            <div>this is app layout</div>
+            <div>this is app layout 2</div>
             // <section>
             //     <Paper zDepth={1} style={{ position: 'fixed', width: '100%', zIndex: 10 }}>
             //         <AppBar>
@@ -40,11 +40,10 @@ export class AppLayout extends Component<any, any> {
     }
 }
 
-function mapStateToProps(state:any) {
+function mapStateToProps(state: any) {
     return {
         loading: false
     };
 }
 
 export default connect(mapStateToProps)(AppLayout);
- 

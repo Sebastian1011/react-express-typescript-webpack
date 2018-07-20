@@ -8,8 +8,6 @@ export default class AppBar extends Component<any, any> {
 
     render() {
         const { children } = this.props;
-        return (
-            <div>this is tool bar</div>
-        );
+        return <div>this is tool bar</div>;
     }
 }

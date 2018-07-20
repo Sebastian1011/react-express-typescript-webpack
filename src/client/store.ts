@@ -1,4 +1,6 @@
 import { createStore, applyMiddleware, Middleware } from 'redux';
+import history from './history';
+import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
 import reducers from './reducers/rootReducers';
@@ -12,4 +14,4 @@ if (module.hot) {
     middlewares.push(reduxActionsLogger);
 }
 
-export default createStore(reducers, initialState, applyMiddleware(...middlewares));
+export default createStore(reducers, initialState, applyMiddleware(...middlewares, routerMiddleware(history)));

@@ -7,7 +7,6 @@ export default function setup(app: Express) {
     app.get('/api/stats', (req: Request, res: Response) => {
         setTimeout(() => {
             res.json({
-                // error: 'server error message',
                 rtn: 0,
                 message: 'ok',
                 servers
