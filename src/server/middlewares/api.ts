@@ -1,33 +1,53 @@
 // API
 import express, { Request, Response, Express } from 'express';
+import { logger } from '../logger';
+import { Todo } from '../model/todo';
 
-const servers = [{ id: 1, name: 'a' }, { id: 2, name: 'b' }, { id: 3, name: 'c' }];
+const servers: Todo[] = [{ id: 1, name: 'a' }, { id: 2, name: 'b' }, { id: 3, name: 'c' }];
 
 export default function setup(app: Express) {
-    app.get('/api/stats', (req: Request, res: Response) => {
-        setTimeout(() => {
-            res.json({
-                rtn: 0,
-                message: 'ok',
-                servers
-            });
-        }, 100);
+    app.get('/api/todo', (req: Request, res: Response) => {
+        res.json({
+            rtn: 0,
+            message: 'ok',
+            servers
+        });
+    });
+    app.post('/api/todo', (req: Request, res: Response) => {
+        let id: number = 0;
+        if (servers.length > 0) id = servers[servers.length - 1].id + 1;
+        servers.push({ id, name: req.body.name || '' });
+        res.json({
+            rtn: 0,
+            message: 'ok',
+            id
+        });
     });
 
-    app.post('/api/servers', (req: Request, res: Response) => {
-        if (!req.body.name) {
-            return res.json({
-                error: 'cannot add server with empty name'
-            });
+    app.delete('/api/todo/:id', (req: Request, res: Response) => {
+        logger.info(req.params);
+        for (let i = 0; i < servers.length; i++) {
+            const todo = servers[i];
+            if (todo.id === parseInt(req.params.id)) {
+                servers.splice(i, 1);
+            }
         }
-        return setTimeout(() => {
-            servers.push({
-                id: servers[servers.length - 1].id + 1,
-                name: req.body.name
-            });
-            res.json({
-                success: true
-            });
-        }, 500);
+        res.json({
+            rtn: 0,
+            message: 'ok'
+        });
+    });
+
+    app.put('/api/todo/:id', (req: Request, res: Response) => {
+        for (let i = 0; i < servers.length; i++) {
+            const todo = servers[i];
+            if (todo.id === parseInt(req.params.id)) {
+                todo.name = req.body.name;
+            }
+        }
+        res.json({
+            rtn: 0,
+            message: 'ok'
+        });
     });
 }
