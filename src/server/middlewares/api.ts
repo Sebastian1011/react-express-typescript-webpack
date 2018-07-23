@@ -7,6 +7,7 @@ const todo_list: Todo[] = [{ id: 1, name: 'a1' }, { id: 2, name: 'b2' }, { id: 3
 
 export default function setup(app: Express) {
     app.get('/api/todo', (req: Request, res: Response) => {
+        logger.info('get list');
         res.json({
             rtn: 0,
             message: 'ok',
