@@ -7,7 +7,7 @@ import devSetup from './middlewares/development';
 import prodSetup from './middlewares/production';
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-process.env.HTTP_PORT = process.env.HTTP_PORT || '3000';
+process.env.HTTP_PORT = process.env.HTTP_PORT || '9900';
 
 function onUnhandledError(err: Error) {
     try {

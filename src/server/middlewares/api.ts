@@ -3,7 +3,7 @@ import express, { Request, Response, Express } from 'express';
 import { logger } from '../logger';
 import { Todo } from '../model/todo';
 
-const todo_list: Todo[] = [{ id: 1, name: 'a' }, { id: 2, name: 'b' }, { id: 3, name: 'c' }];
+const todo_list: Todo[] = [{ id: 1, name: 'a1' }, { id: 2, name: 'b2' }, { id: 3, name: 'c3' }];
 
 export default function setup(app: Express) {
     app.get('/api/todo', (req: Request, res: Response) => {

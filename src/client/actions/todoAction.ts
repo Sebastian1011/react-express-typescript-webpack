@@ -18,17 +18,17 @@ export const getTodoListSuccess = (payload: TodoResponse): AnyAction => ({
     payload
 });
 
-export const addTodoList = (name: string): AnyAction => ({
+export const addTodoList = (payload: string): AnyAction => ({
     type: ActionTypes.ADD_TODO,
-    name
+    payload
 });
 
-export const updateTodoList = (todo: Todo): AnyAction => ({
+export const updateTodoList = (payload: Todo): AnyAction => ({
     type: ActionTypes.UPDATE_TODO,
-    todo
+    payload
 });
 
-export const delTodoList = (id: number): AnyAction => ({
+export const delTodoList = (payload: number): AnyAction => ({
     type: ActionTypes.DELETE_TODO,
-    id
+    payload
 });

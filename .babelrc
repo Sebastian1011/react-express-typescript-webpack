@@ -12,6 +12,13 @@
   ],
   "retainLines": true,
   "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": "css"
+      }
+    ],
     "transform-runtime",
     "react-hot-loader/babel"
   ]

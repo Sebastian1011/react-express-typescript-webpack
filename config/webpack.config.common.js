@@ -44,24 +44,24 @@ module.exports = {
                         {
                             loader: 'css-loader',
                             options: {
-                                localIdentName: IS_DEV ? '[path]-[name]_[local]' : '[name]_[local]_[hash:5]', // [hash:base64]
-                                modules: true,
+                                // localIdentName: IS_DEV ? '[path]-[name]_[local]' : '[name]_[local]_[hash:5]', // [hash:base64]
+                                // modules: true,
                                 sourceMap: IS_DEV
                             }
                         },
                         {
-                            loader: 'sass-loader',
+                            loader: 'postcss-loader',
                             options: { sourceMap: IS_DEV }
                         },
                         {
-                            loader: 'postcss-loader',
+                            loader: 'sass-loader',
                             options: { sourceMap: IS_DEV }
                         }
                     ]
                 })
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                test: /\.(png|jpg|gif|mp4|ogg|eot|svg|ttf|woff|woff2)$/,
                 loader: 'file-loader'
             }
         ]

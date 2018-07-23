@@ -16,7 +16,7 @@
     },
     "scripts": {
         "watch-ts": "tsc -w -p src/server --outDir build-dev/server",
-        "dev-server": "cross-env NODE_ENV=development nodemon build-dev/server",
+        "dev-server": "cross-env NODE_ENV=development node build-dev/server",
         "dev": "concurrently --kill-others \"npm run watch-ts\" \"npm run dev-server\"",
         "start": "cross-env NODE_ENV=production node build/server",
         "build": "npm run build:client && npm run build:server",
@@ -53,6 +53,7 @@
         "babel-core": "6.26.3",
         "babel-eslint": "8.2.6",
         "babel-loader": "7.1.5",
+        "babel-plugin-import": "^1.8.0",
         "babel-plugin-transform-runtime": "^6.23.0",
         "babel-polyfill": "^6.26.0",
         "babel-preset-env": "1.7.0",
